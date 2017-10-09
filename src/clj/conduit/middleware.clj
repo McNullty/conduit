@@ -1,16 +1,16 @@
 (ns conduit.middleware
-  (:require [conduit.env :refer [defaults]]
-            [conduit.config :refer [env]]
-            [ring.middleware.flash :refer [wrap-flash]]
+  (:require [buddy.auth :refer [authenticated?]]
+            [buddy.auth.accessrules :refer [restrict]]
+            [buddy.auth.backends.token :refer [jwe-backend]]
+            [buddy.auth.middleware :refer [wrap-authentication wrap-authorization]]
+            [buddy.core.nonce :refer [random-bytes]]
+            [buddy.sign.jwt :refer [encrypt]]
+            [clj-time.core :refer [minutes now plus]]
+            [conduit.env :refer [defaults]]
             [immutant.web.middleware :refer [wrap-session]]
             [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
-            [buddy.auth.middleware :refer [wrap-authentication wrap-authorization]]
-            [buddy.auth.accessrules :refer [restrict]]
-            [buddy.auth :refer [authenticated?]]
-            [buddy.auth.backends.token :refer [jwe-backend]]
-            [buddy.sign.jwt :refer [encrypt]]
-            [buddy.core.nonce :refer [random-bytes]]
-            [clj-time.core :refer [plus now minutes]]))
+            [ring.middleware.flash :refer [wrap-flash]]
+            [ring.middleware.format-response :refer [wrap-json-response]]))
 
 (defn on-error [request response]
   {:status 403
@@ -43,6 +43,7 @@
   (-> ((:middleware defaults) handler)
       wrap-auth
       wrap-flash
+      wrap-json-response
       (wrap-session {:cookie-attrs {:http-only true}})
       (wrap-defaults
         (-> site-defaults

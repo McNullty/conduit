@@ -31,6 +31,7 @@
                  [ring-webjars "0.2.0"]
                  [ring/ring-core "1.6.2"]
                  [ring/ring-defaults "0.3.1"]
+                 [ring/ring-json "0.4.0"]
                  [selmer "1.11.1"]]
 
   :min-lein-version "2.0.0"
@@ -70,7 +71,6 @@
                                  [org.clojure/core.cache "0.6.3"]
                                  [org.seleniumhq.selenium/selenium-server "2.48.2" :exclusions [org.bouncycastle/bcprov-jdk15on org.bouncycastle/bcpkix-jdk15on]]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.19.0"]]
-                  
                   :source-paths ["env/dev/clj"]
                   :resource-paths ["env/dev/resources"]
                   :repl-options {:init-ns user}

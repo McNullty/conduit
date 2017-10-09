@@ -1,15 +1,18 @@
 (ns conduit.routes.user
-  (:require [ring.util.http-response :refer :all]
-            [compojure.api.sweet :refer [context GET PUT]]))
+  (:require [compojure.api.sweet :refer [context GET PUT]]
+            [conduit.db.core :as db]
+            [ring.util.http-response :refer :all]
+            [ring.util.response :refer [response]]))
+
 
 (def routes
   (context "/user" []
            :tags ["User"]
 
-           (GET "/" []
-                :return       String
+           (GET "/" [id]
+                :query-params [id :- Long]
                 :summary      "Get User"
-                (ok (str "Get user")))
+                (response (db/get-user {:id id})))
 
            (PUT "/" []
                 :return      String
