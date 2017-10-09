@@ -1,4 +1,4 @@
-(ns conduit.test.db.core
+(ns conduit.test.db.users_tests
   (:require [conduit.db.core :refer [*db*] :as db]
             [luminus-migrations.core :as migrations]
             [clojure.test :refer :all]
