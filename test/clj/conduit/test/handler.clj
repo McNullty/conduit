@@ -2,10 +2,19 @@
   (:require [clojure.test :refer :all]
             [ring.mock.request :refer :all]
             [conduit.handler :refer :all]
-            [cheshire.core :as cheshire]))
+            [cheshire.core :as cheshire]
+            [conduit.db.core :refer [*db*] :as db]))
 
 (defn parse-body [body]
   (cheshire/parse-string (slurp body) true))
+
+(use-fixtures
+  :once
+  (fn [f]
+    (db/create-tag! {:name "reactjs"})
+    (db/create-tag! {:name "angularjs"})
+    (f)
+    (db/delete-all-tags!)))
 
 (deftest test-app
   (testing "main route"

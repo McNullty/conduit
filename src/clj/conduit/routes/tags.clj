@@ -1,8 +1,7 @@
 (ns conduit.routes.tags
   (:require [ring.util.http-response :refer :all]
             [compojure.api.sweet :refer [context GET POST DELETE resource]]
-            [conduit.db.core :refer [*db*] :as db]
-            [clojure.java.jdbc :as jdbc]))
+            [conduit.db.core :refer [*db*] :as db]))
 
 (def routes
   (context "/tags" []

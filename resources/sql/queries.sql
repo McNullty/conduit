@@ -31,3 +31,7 @@ VALUES (:name)
 -- :name get-tags :? :*
 -- :doc retrieve all tags.
 SELECT * FROM tags
+
+-- :name delete-all-tags! :! :n
+-- :doc utility method to clean test database
+DELETE FROM tags
