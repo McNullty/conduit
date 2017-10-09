@@ -23,11 +23,9 @@
                  :token "hashvalue"
                  :image "www.imgur.com/myimage"
                  :bio "I like mushrooms"}
-          id (first (db/create-user! t-conn input))]
-      (is (= {:id (get id :id)
-              :username "alice"
-              :email "alice@wonderland.com"
-              :image "www.imgur.com/myimage"
-              :token "hashvalue"
-              :bio "I like mushrooms"}
-             (db/get-user t-conn id))))))
+          id (first (db/create-user! t-conn input))
+          expected (merge input id)
+          actual (db/get-user t-conn id)]
+      (is (contains? id :id))
+      (is (contains? expected :id))
+      (is (= expected actual)))))
