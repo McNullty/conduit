@@ -7,6 +7,7 @@
            :tags ["Tags"]
 
            (GET "/" []
-                :return       String
+                :return       {:tags [String]}
                 :summary      "Get all tags"
-                (ok (str "Get all tags here")))))
+                (ok {:tags ["reactjs",
+                            "angularjs"]}))))
