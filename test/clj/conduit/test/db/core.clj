@@ -10,27 +10,24 @@
   :once
   (fn [f]
     (mount/start
-      #'conduit.config/env
-      #'conduit.db.core/*db*)
+     #'conduit.config/env
+     #'conduit.db.core/*db*)
     (migrations/migrate ["migrate"] (select-keys env [:database-url]))
     (f)))
 
-(deftest test-users
+(deftest test-create-and-read
   (jdbc/with-db-transaction [t-conn *db*]
     (jdbc/db-set-rollback-only! t-conn)
-    ;; TODO - Reset table ID so it finds first record
-    (is (= 1 (db/create-user!
-               t-conn
-               {:username "alice"
-                :email  "alice@wonderland.com"
-                :token "hashvalue"
-                :image "www.imgur.com/myimage"
-                :bio "I like mushrooms"})))
-    (is (= {:id 1
-            :username "alice"
-            :email "alice@wonderland.com"
-            :image "www.imgur.com/myimage"
-            :token "hashvalue"
-            :bio "I like mushrooms"
-            }
-           (db/get-user t-conn {:id 1})))))
+    (let [input {:username "alice"
+                 :email  "alice@wonderland.com"
+                 :token "hashvalue"
+                 :image "www.imgur.com/myimage"
+                 :bio "I like mushrooms"}
+          id (first (db/create-user! t-conn input))]
+      (is (= {:id (get id :id)
+              :username "alice"
+              :email "alice@wonderland.com"
+              :image "www.imgur.com/myimage"
+              :token "hashvalue"
+              :bio "I like mushrooms"}
+             (db/get-user t-conn id))))))
