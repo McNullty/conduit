@@ -72,10 +72,6 @@
                                  [org.clojure/core.cache "0.6.3"]
                                  [org.seleniumhq.selenium/selenium-server "2.48.2" :exclusions [org.bouncycastle/bcprov-jdk15on org.bouncycastle/bcpkix-jdk15on]]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.19.0"]]
-<<<<<<< HEAD
-=======
-
->>>>>>> master
                   :source-paths ["env/dev/clj"]
                   :resource-paths ["env/dev/resources"]
                   :repl-options {:init-ns user}
