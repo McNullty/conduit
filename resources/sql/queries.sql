@@ -19,3 +19,19 @@ WHERE id = :id
 -- :doc delete a user given the id
 DELETE FROM users
 WHERE id = :id
+
+----------------------- TAGS --------------------
+
+-- :name create-tag! :! :n
+-- :doc creates a new tag record
+INSERT INTO tags
+(name)
+VALUES (:name)
+
+-- :name get-tags :? :*
+-- :doc retrieve all tags.
+SELECT * FROM tags
+
+-- :name delete-all-tags! :! :n
+-- :doc utility method to clean test database
+DELETE FROM tags
