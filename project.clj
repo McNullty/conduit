@@ -4,6 +4,7 @@
   :url "http://example.com/FIXME"
 
   :dependencies [[buddy "1.3.0"]
+                 [cheshire "5.8.0"]
                  [cider/cider-nrepl "0.15.0-SNAPSHOT"]
                  [clj-time "0.14.0"]
                  [compojure "1.6.0"]
@@ -71,6 +72,10 @@
                                  [org.clojure/core.cache "0.6.3"]
                                  [org.seleniumhq.selenium/selenium-server "2.48.2" :exclusions [org.bouncycastle/bcprov-jdk15on org.bouncycastle/bcpkix-jdk15on]]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.19.0"]]
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
                   :source-paths ["env/dev/clj"]
                   :resource-paths ["env/dev/resources"]
                   :repl-options {:init-ns user}

@@ -1,12 +1,13 @@
 (ns conduit.routes.tags
   (:require [ring.util.http-response :refer :all]
-            [compojure.api.sweet :refer [context GET POST DELETE resource]]))
+            [compojure.api.sweet :refer [context GET POST DELETE resource]]
+            [conduit.db.core :refer [*db*] :as db]))
 
 (def routes
   (context "/tags" []
            :tags ["Tags"]
 
            (GET "/" []
-                :return       String
+                :return       {:tags [String]}
                 :summary      "Get all tags"
-                (ok (str "Get all tags here")))))
+                (ok {:tags (vec (map :name (db/get-tags)))}))))
