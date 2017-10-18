@@ -5,7 +5,7 @@
 
   :dependencies [[buddy "1.3.0"]
                  [cheshire "5.8.0"]
-                 [cider/cider-nrepl "0.15.0-SNAPSHOT"]
+                 [cider/cider-nrepl "0.15.1"]
                  [clj-time "0.14.0"]
                  [compojure "1.6.0"]
                  [conman "0.6.8"]
@@ -16,11 +16,12 @@
                  [luminus-nrepl "0.1.4"]
                  [luminus/ring-ttl-session "0.3.2"]
                  [markdown-clj "1.0.1"]
-                 [metosin/compojure-api "1.1.11"]
+                 [metosin/compojure-api "2.0.0-alpha9"]
+                 [metosin/spec-tools "0.4.0"]
                  [metosin/muuntaja "0.3.2"]
                  [metosin/ring-http-response "0.9.0"]
                  [mount "0.1.11"]
-                 [org.clojure/clojure "1.8.0"]
+                 [org.clojure/clojure "1.9.0-beta2"]
                  [org.clojure/java.jdbc "0.7.1"]
                  [org.clojure/tools.cli "0.3.5"]
                  [org.clojure/tools.logging "0.4.0"]
@@ -33,6 +34,7 @@
                  [ring/ring-core "1.6.2"]
                  [ring/ring-defaults "0.3.1"]
                  [ring/ring-json "0.4.0"]
+                 [ring-middleware-format "0.7.2"]
                  [selmer "1.11.1"]]
 
   :min-lein-version "2.0.0"
