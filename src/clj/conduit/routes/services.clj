@@ -38,8 +38,11 @@
        :current-user user
        (ok {:user user}))
   (context "/api" []
+    :tags ["api"]
+    :coercion :spec
+
     profiles/routes
     tags/routes
     user/routes
-    users/routes
-    articles/routes))
+    users/routes))
+;;    articles/routes))

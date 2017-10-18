@@ -7,11 +7,11 @@
            :tags ["User Auth"]
 
            (GET "/" []
-                :return       String
+                :return       string?
                 :summary      "Login"
                 (ok (str "Logged in")))
 
            (POST "/" []
-                 :return      String
+                 :return      string?
                  :summary     "Register"
                  (ok (str "Thank you for registering")))))
