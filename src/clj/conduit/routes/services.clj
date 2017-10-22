@@ -44,5 +44,5 @@
     profiles/routes
     tags/routes
     user/routes
-    users/routes))
-;;    articles/routes))
+    users/routes
+    articles/routes))
